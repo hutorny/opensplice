@@ -267,7 +267,7 @@ int __S_exchange_and_add (volatile int *mem, int val)
 }
 #endif
 
-#if !(defined __APPLE__ || defined __linux) || (__GNUC__ > 0 && (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) < 40100)
+#if (defined NO_EXECINFO_H) || !(defined __APPLE__ || defined __linux) || (__GNUC__ > 0 && (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) < 40100)
 void log_stacktrace (const char *name, os_threadId tid)
 {
   OS_UNUSED_ARG (name);
