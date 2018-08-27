@@ -418,12 +418,12 @@ os_signalHandlerFinishExitRequest(
             OS_NSIG, sig);
         r = os_resultInvalid;
     } else if (sigismember(&quitsMask, sig) == 0){
-#if OS_NSIG >= 100
-#error "Worst-case allocation assumes max. signal of 99, which apparently is not correct"
+#if OS_NSIG >= 1000
+#error "Worst-case allocation assumes max. signal of 999, which apparently is not correct"
 #endif
-        /* We know which signal-number exist, all take at most 2 digits + ", ",
-         * so allocate worst-case 4 * quits_len */
-        char *expected = os_malloc(quits_len * 4 + 1);
+        /* We know which signal-number exist, all take at most 3 digits + ", ",
+         * so allocate worst-case 5 * quits_len */
+        char *expected = os_malloc(quits_len * 5 + 1);
         if(expected){
             unsigned i;
             int pos;
