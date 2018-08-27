@@ -1,0 +1,1 @@
+include $(OSPL_HOME)/setup/mips.linux_cross-common.mak

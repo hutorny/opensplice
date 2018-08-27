@@ -32,3 +32,8 @@ Execute bin/build.sparc.solaris8 from within the top level source directory.
 
 To build all target releases the script bin/build.all is available.
 Execute bin/build.all from within the top level source directory.
+
+For OpenWRT targets ensure that: 
+- appropriate toolchain binaries (mips-openwrt-linux-* or mipsel-openwrt-linux-* ) 
+  are found on the PATH
+- STAGING_DIR points to OpenWRT SDK's staging_dir

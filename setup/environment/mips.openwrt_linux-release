@@ -1,0 +1,46 @@
+. "$OSPL_HOME/bin/checkconf"
+
+if [ "$SPLICE_HOST" = "" ]
+then
+   SPLICE_HOST=x86_64.linux-release
+fi
+
+SPLICE_TARGET=mips.openwrt_linux-release
+export SPLICE_HOST SPLICE_TARGET
+SPLICE_TARGET_FULL=mipsel.openwrt_linux-release
+export SPLICE_TARGET_FULL
+CROSS_COMPILE=mips-openwrt-linux-
+export CROSS_COMPILE
+set_var CROSS_COMPILE mips-openwrt-linux-
+echo
+
+ERRS=0
+gcc_check || ERRS=1
+make_check || ERRS=1
+gawk_check || ERRS=1
+bison_check || ERRS=1
+flex_check || ERRS=1
+gsoap_check || ERRS=1
+javac_check || ERRS=1
+gmcs_check || ERRS=1
+if [ "$CROSS" != "1" ]
+then
+  tao_check || ERRS=1
+  jacorb_check || ERRS=1
+fi
+protoc_check || ERRS=1
+c99_check || ERRS=1
+
+if [ -z $REPORT ]
+then
+    if [ "$ERRS" = "0" ]
+    then
+        echo Configuration OK
+        CONFIGURATION=OK
+    else
+        echo Configuration Invalid
+        CONFIGURATION=INVALID
+    fi
+    export CONFIGURATION
+    cleanup_checks
+fi

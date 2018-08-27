@@ -2,6 +2,8 @@
 # supported targets
 #   sparc.solaris8	SPARC sun4 Solaris8 target
 #   x86.linux	x86 linux (linux 2.4 with NPTL or greater) target
+#   mips.openwrt_linux    MIPS  OpenWRT
+#   mipsel.openwrt_linux  MIPSel  OpenWRT (little-endian MIPS)
 #
 # supported builds
 #   -dev      for development (not optimized, debug option on, symbolic debugging)
